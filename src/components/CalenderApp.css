@@ -28,6 +28,7 @@
     padding-top: 15px;
     left: 32.5%;
     position: relative;
+    text-align: center;
   }
 
   .calendar-app .category-select {
@@ -36,7 +37,7 @@
     border-top: .2rem solid #00a3ff;
     border-bottom: .2rem solid #00a3ff;
     color: #fff;
-    width: clamp(10rem,4cqi,7rem);
+    width: clamp(12rem,4cqi,7rem);
     height: 4rem;
     text-align: center;
     font-size: clamp(1.2rem,1.2cqi,1.6rem);
@@ -264,6 +265,7 @@ textarea::placeholder {
     border-radius: 1rem;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
     padding: 10px;
     position: relative;
 }
