@@ -1,0 +1,903 @@
+.calendar-app{
+    width: 65%;
+    min-width: 90vmin;
+    aspect-ratio: 3 / 2;
+    background-color: #000;
+    padding: 3rem;
+    border-radius: 3rem;
+    border: 1rem solid #fff;
+    display: flex;
+    column-gap: 0rem;
+    transform-style: preserve-3d;
+}
+.calendar-app::after{
+    content: "";
+    position:absolute;
+    bottom: -12rem;
+    left: 50%;
+    transform: translate(-50%) rotateX(50deg);
+    width: 90%;
+    height: 16rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 20rem;
+    filter: blur(4rem);
+}
+
+.filters {
+    align-self: flex-start;
+    padding-top: 15px;
+    left: 32.5%;
+    position: relative;
+  }
+
+.calendar{
+    width: 60%;
+    margin-bottom: 0.5rem;
+}
+.heading{
+    font-family: "Bebas Neue",sans-serif;
+    font-size: clamp(4rem,3.8cqi,7rem);
+    color: #fff;
+    letter-spacing: 0.3rem;
+    padding-left: 1.3rem;
+}
+.navigate-date{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin: 3.5rem 0;
+}
+
+.navigate-date h2{
+    font-size: clamp(1.5rem,1.5scqi,2.5rem);
+    color:#bbb;
+}
+
+.buttons{
+    display: flex;
+    column-gap: 1rem;
+    margin-left: auto;
+}
+
+.buttons i{
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #2c3542;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: aqua;
+    cursor: pointer;
+}
+
+.weekdays{
+    width: 100%;
+    display: flex;
+    margin: 3rem 0;
+}
+
+.weekdays span{
+    width: calc(100%/7);
+    font-size: clamp(1rem,0.8cqi,1.3rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #78879e;
+    letter-spacing: 0.1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.days{
+    display: flex;
+    flex-wrap: wrap;
+}
+.days span{
+    width: calc(100%/7);
+    font-size: clamp(1.2rem,1cqi,1.6rem);
+    aspect-ratio: 1;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0.5rem 1rem rgba(0,0,0,0.2);
+}
+
+.current-day{
+    background-color: #ef9011;
+    border-radius: 50%;
+    box-shadow: 0 0 1.5rem rgba(239,144,17,0.3);
+}
+
+.events{
+    width: 100%;
+    height: 80%;
+    padding: 3rem 0;
+    margin-top: 10%;
+    overflow-y: auto;
+}
+
+.events::-webkit-scrollbar{
+    display: none;
+}
+
+.event-popup{
+    position: absolute;
+    top: 40%;
+    left: 1rem;
+    background-color: #161b22;
+    width: clamp(30rem,21cqi,40rem);
+    aspect-ratio: 10/9;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+}
+
+.time-input{
+    display: flex;
+    column-gap: 1rem;
+}
+.event-popup-time{
+    width: clamp(4rem, 4cqi,7rem);
+    background-color: #00a3ff;
+    color: #fff;
+    font-family: "Bebas Neue",sans-serif;
+    font-size: clamp(1.5rem,1.5cqi,2.2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1.5re 1rem rgba(0,163,255,0.2);
+    letter-spacing: 0.1rem;
+}
+.time-input input{
+    background-color: transparent;
+    border: none;
+    border-top: .2rem solid #00a3ff;
+    border-bottom: .2rem solid #00a3ff;
+    color: #fff;
+    width: clamp(10rem,4cqi,7rem);
+    height: 4rem;
+    text-align: center;
+    font-size: clamp(1.2rem,1.2cqi,1.6rem);
+}
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 200px; 
+}
+  
+.custom-dropdown select {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0; 
+    color: #333;
+    cursor: pointer;
+    appearance: none; 
+    text-align: center;
+}
+  
+.custom-dropdown::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333;
+}
+  
+.custom-dropdown option {
+    background-color: #ffffff; 
+    color: #333; 
+  }
+  
+  
+  .custom-dropdown option:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .custom-dropdown option:active {
+    background-color: #ddd;
+  }
+  
+
+.category-select{
+    background-color: transparent;
+    border: none;
+    border-top: .2rem solid #00a3ff;
+    border-bottom: .2rem solid #00a3ff;
+    color: #fff;
+    width: clamp(10rem,4cqi,7rem);
+    height: 4rem;
+    text-align: center;
+    font-size: clamp(1.2rem,1.2cqi,1.6rem);
+}
+
+.wrapper{   
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem ;
+}
+
+textarea::placeholder {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    flex-direction: row;  }
+
+.event-category {
+    font-size: clamp(1rem,1cqi,1.2rem);
+    color: #000000;
+    background-color: #D1E9F6;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 15%;
+    margin-top: 10px;
+
+  }
+
+.event{
+    height: 8rem;
+    width: 100%;
+    background-color: #78B7D0;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+
+.time-input input[type="number"]::-webkit-outer-spin-button,
+.time-input input[type="number"]::-webkit-inner-spin-button{
+    appearance: none;
+}
+
+.event-popup textarea{
+    width: clamp(15rem,15cqi,25rem);
+    aspect-ratio: 5/2;
+    resize: none;
+    background-color: #0f1319;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: #78879e;
+    transition: border 0.5s;
+
+}
+
+.event-popup textarea:focus{
+    border: 0.1rem solid #00a3ff;
+}
+
+.event-popup textarea::placeholder{
+    width: clamp(12rem,1.5cqi,1.2rem);
+    color: #b0aeae;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.event-popup textarea:focus::placeholder{
+    color: transparent;
+}
+
+.event-popup-btn{
+    width: clamp(15rem,15cqi,25rem);
+    height: 4rem;
+    background-color: #ef9011;
+    color: #fff;
+    font-family: 'Bebas Neue',sans-serif;
+    font-size: clamp(1.5rem,1.5cqi,2.2rem);
+    letter-spacing: 0.1rem;
+    border: none;
+    box-shadow: 0 0 1.5rem 1rem rgba(239,144,17,0.2);
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+}
+
+.event-popup-btn:active{
+    transform: translateY(0.1rem);
+}
+
+.close-event-popup{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.close-event-popup i{
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.event-date-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin:auto;
+    border-right: .1rem solid #000000;
+}
+
+.event-date{
+    font-size: clamp(1rem,1cqi,1.2rem);
+    color: #000000;
+}
+
+.event-time{
+    font-size: clamp(1.3rem,1cqi,1.6rem);
+    line-height: 3rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.event-text{
+    font-size: clamp(1.2rem,1cqi,1.4rem);
+    line-height: 2rem;
+    color: #000000;
+    width: 75%;
+    margin-top: 1rem;
+    overflow-wrap: break-word;
+}
+
+.event-buttons{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap:1rem;
+}
+
+.event-buttons i{
+    font-size: 1.6rem;
+
+}
+
+.category-textwrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .detail-date{
+    font-size: 1.6rem;
+    
+  }
+  .detail-time{
+    font-size: 1.6rem;
+    
+  }
+  .detail-category{
+    font-size: 1.6rem;
+    
+  }
+
+  .detail-description{
+    font-size: 1.6rem;
+    
+  }
+
+
+  .detail-head{
+    font-size: 2.6rem;
+    position: relative;
+    padding-bottom: 5%;
+    bottom: 1%;
+    text-decoration: underline;
+    
+  }
+
+  .modal-content {
+    position: relative; 
+    background-color: #78B7D0;
+    padding: 20px;
+    border-radius: 10px;
+    border: .6rem solid white;
+    max-width: 500px;
+    width: 80%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 15px; 
+    cursor: pointer;
+    font-weight: bold;
+    color: black ;
+  }
+  
+  
+
+@media (max-width: 1200px) and (min-width:1025px) {
+    .calendar-app{
+        flex-direction: row;
+        aspect-ratio: 3/2;
+        height: 50rem;
+        min-width: 80%;
+    }
+
+    .calendar{
+        width: 80%;
+        margin: auto;
+    }
+
+    .navigate-date{
+        margin: 1rem 0;
+    }
+
+    .weekdays{
+        margin: 1rem 0;
+    }
+
+    .events{
+        margin: auto;
+        width: 100%; 
+    }
+
+    .event-popup{
+        top: 40%;
+        left: 21%;
+        transform: translateX(-50%);
+        width: 37%;
+        aspect-ratio: 10/9;
+        row-gap: 1rem;
+        margin: auto;
+    }
+
+    .event-popup-time{
+        width: clamp(3rem,10cqi,8rem);
+        font-size: clamp(1rem,3cqi,2.2rem);
+    }
+
+    .time-input input{
+        width: clamp(10rem,10cqi,8rem);
+        font-size: clamp(1.2rem,2cqi,1.6rem);
+    }
+
+    .event-popup textarea{
+        width: clamp(10rem,35cqi,20rem);
+    }
+
+    .event-popup textarea::placeholder{
+        width: clamp(12rem,1.5cqi,1.2rem);
+        color: #b0aeae;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .event-date-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        margin:auto;
+        border-right: .1rem solid rgba(255,255,255,0.5);
+    }
+    .event-popup-btn{
+        width: clamp(25rem,15cqi,25rem);
+        height: 4rem;
+        background-color: #ef9011;
+        color: #fff;
+        font-family: 'Bebas Neue',sans-serif;
+        font-size: clamp(1.5rem,1.5cqi,2.2rem);
+        letter-spacing: 0.1rem;
+        border: none;
+        box-shadow: 0 0 1.5rem 1rem rgba(239,144,17,0.2);
+        cursor: pointer;
+    }
+
+}
+
+@media (max-width: 1024px) and (min-width:851px) {
+    .calendar-app{
+        flex-direction: column;
+        row-gap: 2rem;
+        aspect-ratio: 3/2;
+        height: 60rem;
+        min-width: 40%;
+    }
+
+    .calendar{
+        width: 55%;
+        margin: auto;
+    }
+
+    .navigate-date{
+        margin: 1rem 0;
+    }
+
+    .weekdays{
+        margin: 1rem 0;
+    }
+
+    .events{
+        margin: auto;
+        width: 100%;
+        max-height: calc(100% - 3rem);
+        overflow: scroll;
+        padding-top: 0;
+    }
+
+    .event-popup{
+        top:27%;
+        left:50%;
+        transform: translateX(-50%);
+        width: 66%;
+        aspect-ratio: 4/3;
+        row-gap: 1rem;
+        margin: auto;
+    }
+
+    .event-popup-time{
+        width: clamp(5rem,10cqi,8rem);
+        font-size: clamp(1.5rem,3cqi,2.2rem);
+    }
+    .time-input input{
+        width: clamp(10rem,10cqi,8rem);
+        font-size: clamp(1.2rem,2cqi,1.6rem);
+    }
+
+    .event-popup textarea{
+        width: clamp(18rem,35cqi,28rem);
+    }
+
+    .event-popup textarea::placeholder{
+        width: clamp(12rem,1.5cqi,1.2rem);
+        color: #b0aeae;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .event-popup-btn{
+        width: clamp(5rem,10cqi,28rem);
+        font-size: clamp(1.5rem,3cqi,2.2rem);
+    }
+
+    .event-date{
+        font-size: clamp(1rem,1.4cqi,1.2rem)
+    }
+
+    .event-time{
+        font-size: clamp(1rem,2cqi,1.6rem)
+    }
+
+    .event-date{
+        font-size: clamp(1rem,2.5cqi,1.4rem)
+    }
+    .event-date-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+        margin:auto;
+        border-right: .1rem solid rgba(255,255,255,0.5);
+    }
+    .event-popup-btn{
+        width: clamp(25rem,15cqi,25rem);
+        height: 4rem;
+        background-color: #ef9011;
+        color: #fff;
+        font-family: 'Bebas Neue',sans-serif;
+        font-size: clamp(1.5rem,1.5cqi,2.2rem);
+        letter-spacing: 0.1rem;
+        border: none;
+        box-shadow: 0 0 1.5rem 1rem rgba(239,144,17,0.2);
+        cursor: pointer;
+    }
+    
+ 
+    .filters {
+        align-self: flex-start;
+        padding: 10px;
+        left: 40%;
+        position: relative;
+    }
+
+}
+
+@media (max-width: 850px) and (min-width:501px) {
+    .calendar-app{
+        flex-direction: column;
+        aspect-ratio: 3/2;
+        height: 60rem;
+        width: 60%;
+        align-items: center;
+    }
+
+    .calendar{
+        max-width: 70%;
+    }
+
+    .navigate-date{
+        margin: 1rem 0;
+    }
+
+    .weekdays{
+        margin: 1rem 0;
+    }
+
+    .events{
+        width: 100%;
+        padding-top: 0;
+        
+    }
+    
+    .event{
+        height: 8rem;
+        width: 100%;
+        background-color: #78B7D0;
+        padding:1rem 0;
+        border-radius: 1rem;
+        position: relative;
+        top: 0%;
+    }
+
+    .event-popup{
+        top:27%;
+        left:50%;
+        transform: translateX(-50%);
+        width: 66%;
+        aspect-ratio: 4/3;
+        row-gap: 1rem;
+    }
+
+    .event-popup-time{
+        width: clamp(5rem,10cqi,8rem);
+        font-size: clamp(1.5rem,3cqi,2.2rem);
+    }
+    .time-input input{
+        width: clamp(10rem,10cqi,8rem);
+        font-size: clamp(1.2rem,2cqi,1.6rem);
+    }
+
+    .event-popup textarea{
+        width: clamp(18rem,35cqi,28rem);
+    }
+
+    .event-popup textarea::placeholder{
+        width: clamp(12rem,1.5cqi,1.2rem);
+        color: #b0aeae;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .event-popup-btn{
+        width: clamp(5rem,10cqi,28rem);
+        font-size: clamp(1.5rem,3cqi,2.2rem);
+    }
+
+    .event-date{
+        font-size: clamp(1rem,1.4cqi,1.2rem)
+    }
+
+    .event-time{
+        font-size: clamp(1rem,2cqi,1.6rem)
+    }
+
+    .event-date{
+        font-size: clamp(1rem,2.5cqi,1.4rem)
+    }
+    .event-popup-btn{
+        width: clamp(25rem,15cqi,25rem);
+        height: 4rem;
+        background-color: #ef9011;
+        color: #fff;
+        font-family: 'Bebas Neue',sans-serif;
+        font-size: clamp(1.5rem,1.5cqi,2.2rem);
+        letter-spacing: 0.1rem;
+        border: none;
+        box-shadow: 0 0 1.5rem 1rem rgba(239,144,17,0.2);
+        cursor: pointer;
+    }
+
+}
+
+@media (max-width: 500px){
+    .calendar-app{
+        aspect-ratio: 10/9;
+        height: 65rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    .calendar{
+        width: 70%;
+    }
+    .event-popup{
+        top:27%;
+        width: 85%;
+    }
+    .event-popup-time{
+        width: clamp(10rem,10cqi,8rem);
+        font-size: clamp(1.5rem,3cqi,2.2rem);
+    }
+    .time-input input{
+        width: clamp(10rem,10cqi,8rem);
+        font-size: clamp(1.2rem,2cqi,1.6rem);
+    }
+
+    .event-popup textarea{
+        width: clamp(28rem,35cqi,28rem);
+        font-size: clamp(1.2rem,2cqi,1.6rem);
+    }
+
+    .event-popup textarea::placeholder{
+        width: clamp(1rem,1.5cqi,1.2rem);
+    }
+
+    .events{
+        width: 100%;
+        background-color: transparent;
+        padding-top: 0;
+    }
+    .event-popup-btn{
+        width: clamp(25rem,15cqi,25rem);
+        height: 4rem;
+        background-color: #ef9011;
+        color: #fff;
+        font-family: 'Bebas Neue',sans-serif;
+        font-size: clamp(1.5rem,1.5cqi,2.2rem);
+        letter-spacing: 0.1rem;
+        border: none;
+        box-shadow: 0 0 1.5rem 1rem rgba(239,144,17,0.2);
+        cursor: pointer;
+    }
+    .event-date-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        font-size: clamp(2rem,2.5cqi,1.4rem);
+        margin:auto;
+        border-right: .1rem solid rgba(255,255,255,0.5);
+    }
+    .event-date{
+        font-size: clamp(1rem,1.4cqi,1.2rem)
+    }
+
+    .event-time{
+        font-size: clamp(1rem,2cqi,1.6rem)
+    }
+
+    .event-date{
+        font-size: clamp(1rem,2.5cqi,1.4rem)
+    }
+
+    .event-popup textarea::placeholder{
+        width: clamp(12rem,1.5cqi,1.2rem);
+        color: #b0aeae;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .event{
+        height: 8rem;
+        width: 100%;
+        background-color: #78B7D0;
+        padding:1rem 0;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        font-size: clamp(1rem,2.5cqi,1.4rem);
+        position: relative;
+    }
+    .filters {
+        align-self: flex-start;
+        padding: 10px;
+        left: 30%;
+        text-align: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .category-select{
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 375px){
+    .calendar-app{
+        aspect-ratio: 3/2;
+        height: 60rem;
+    }
+    .calendar{
+        width: 70%;
+    }
+    .events{
+        width: 100%;
+    }
+    .event-popup-btn{
+        width: clamp(15rem,15cqi,25rem);
+        height: 4rem;
+        background-color: #ef9011;
+        color: #fff;
+        font-family: 'Bebas Neue',sans-serif;
+        font-size: clamp(1.5rem,1.5cqi,2.2rem);
+        letter-spacing: 0.1rem;
+        border: none;
+        box-shadow: 0 0 1.5rem 1rem rgba(239,144,17,0.2);
+        cursor: pointer;
+    }
+    .event-date-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin:auto;
+        border-right: .1rem solid rgba(255,255,255,0.5);
+    }
+    .event-popup{
+        top:25%;
+        width: 86%;
+    }
+    .event-popup-time{
+        width: clamp(15rem,10cqi,8rem);
+        font-size: clamp(1.5rem,3cqi,2.2rem);
+    }
+    .time-input input{
+        width: clamp(10rem,10cqi,8rem);
+        font-size: clamp(1.2rem,2cqi,1.6rem);
+    }
+
+    .event-popup textarea{
+        width: clamp(18rem,35cqi,28rem);
+    }
+
+    .event-popup textarea::placeholder{
+        width: clamp(12rem,1.5cqi,1.2rem);
+        color: #b0aeae;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .filters {
+        align-self: flex-start;
+        padding: 10px;
+        left: 70%;
+        position: relative;
+        text-align: center;
+        align-items: center;
+    }
+
+}
