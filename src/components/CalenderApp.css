@@ -742,6 +742,9 @@ textarea::placeholder {
     .calendar{
         width: 70%;
     }
+    .heading{
+        text-align: center;
+    }
     .event-popup{
         top:27%;
         left: 8%;
