@@ -119,7 +119,7 @@ const CalendarApp = () => {
 
   const filteredEvents = filterCategory === 'all'
     ? events
-    : events.filter(event => event.category === filterCategory);
+    : events.filter(event => event.category.toLowerCase() === filterCategory.toLowerCase());
 
   return (
     <div className="calendar-app">
