@@ -744,6 +744,7 @@ textarea::placeholder {
     }
     .event-popup{
         top:27%;
+        left: 8%;
         width: 85%;
     }
     .event-popup-time{
